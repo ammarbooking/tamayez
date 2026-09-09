@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>التميز الشامل | حلول متكاملة لمشروع ناجح</title>
+  <meta name="description" content="التميز الشامل - تأسيس الشركات، الإقامة المميزة، الاستشارات، التسويق والتقنية في المملكة العربية السعودية." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root{
+      --navy:#06213a;
+      --navy-2:#071a2e;
+      --blue:#0d3558;
+      --gold:#f5ad32;
+      --gold-2:#ffc55a;
+      --white:#fff;
+      --muted:#6f8192;
+      --bg:#f5f9fc;
+      --card:#ffffff;
+      --border:#e5edf3;
+      --shadow:0 12px 35px rgba(7,31,54,.10);
+      --radius:18px;
+      --container:1420px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"Cairo",sans-serif;
+      background:var(--bg);
+      color:var(--navy);
+      line-height:1.8;
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    button{font:inherit}
+    .container{width:min(var(--container),92%);margin:auto}
+
+    /* Header */
+    .topbar{
+      background:#061a2d;
+      color:#fff;
+      min-height:72px;
+      position:sticky;
+      top:0;
+      z-index:1000;
+      box-shadow:0 3px 18px rgba(0,0,0,.14);
+    }
+    .nav{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      gap:24px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-right:auto;
+      order:-1;
+      white-space:nowrap;
+    }
+    .brand-mark{
+      width:42px;height:42px;border:2px solid var(--gold);
+      border-radius:12px 12px 12px 2px;
+      transform:rotate(12deg);
+      position:relative;
+    }
+    .brand-mark:after{
+      content:"";
+      position:absolute;
+      inset:7px 10px;
+      border:2px solid #fff;
+      border-radius:9px 2px 9px 2px;
+    }
+    .brand-text strong{display:block;font-size:18px;line-height:1}
+    .brand-text span{font-size:9px;color:#c9d5df;letter-spacing:.4px}
+
+    .nav-links{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:600}
+    .nav-links a{opacity:.92;position:relative;padding:23px 0}
+    .nav-links a:hover,.nav-links a.active{color:var(--gold)}
+    .nav-links a.active:after{
+      content:"";position:absolute;bottom:0;right:0;left:0;height:4px;background:var(--gold);
+    }
+    .lang{
+      display:flex;align-items:center;gap:12px;font-size:12px;white-space:nowrap;
+    }
+    .lang .flag{font-size:16px}
+    .menu-btn{display:none;background:none;border:0;color:#fff;font-size:24px;cursor:pointer}
+
+    /* Hero */
+    .hero{
+      min-height:490px;
+      position:relative;
+      isolation:isolate;
+      background:
+        linear-gradient(90deg,rgba(2,21,39,.78),rgba(2,21,39,.28) 58%,rgba(2,21,39,.46)),
+        url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2200&q=88") center/cover;
+      color:#fff;
+    }
+    .hero:after{
+      content:"";
+      position:absolute;inset:auto 0 0;height:120px;
+      background:linear-gradient(transparent,rgba(4,27,48,.9));
+      z-index:-1;
+    }
+    .hero-content{
+      min-height:490px;
+      display:flex;
+      align-items:center;
+      position:relative;
+    }
+    .hero-copy{max-width:660px;padding:50px 0 90px}
+    .eyebrow{font-size:16px;font-weight:700;margin-bottom:5px}
+    .hero h1{
+      font-size:clamp(38px,5vw,67px);
+      line-height:1.18;
+      margin-bottom:14px;
+      font-weight:800;
+    }
+    .hero h1 span{color:var(--gold-2)}
+    .hero p{font-size:17px;color:#f0f5f8;max-width:600px;margin-bottom:25px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      border:0;border-radius:999px;padding:12px 25px;
+      cursor:pointer;font-weight:800;display:inline-flex;align-items:center;gap:10px;
+      transition:.25s;
+    }
+    .btn-gold{background:var(--gold);color:#071c30}
+    .btn-gold:hover{transform:translateY(-2px);background:var(--gold-2)}
+    .btn-outline{border:1px solid rgba(255,255,255,.55);background:rgba(4,26,46,.25);color:#fff}
+    .btn-outline:hover{background:rgba(255,255,255,.12)}
+
+    .hero-services{
+      position:absolute;bottom:24px;left:0;
+      width:min(640px,52%);
+      display:grid;grid-template-columns:repeat(4,1fr);
+      background:rgba(4,24,42,.90);
+      border-radius:14px;overflow:hidden;
+      box-shadow:0 15px 40px rgba(0,0,0,.25);
+      backdrop-filter:blur(8px);
+    }
+    .hero-service{
+      padding:18px 12px;text-align:center;border-left:1px solid rgba(255,255,255,.14);
+      font-size:13px;font-weight:700;
+    }
+    .hero-service:last-child{border-left:0}
+    .hero-service i{display:block;color:var(--gold);font-size:25px;margin-bottom:6px}
+
+    /* Section */
+    section{padding:62px 0}
+    .section-head{
+      display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:28px;
+    }
+    .section-head .label{color:#d79317;font-weight:800;font-size:15px}
+    .section-head h2{font-size:31px;line-height:1.3}
+    .section-head p{color:var(--muted);font-size:14px;max-width:600px}
+
+    /* Services */
+    .services-wrap{
+      display:grid;grid-template-columns:1.05fr 2fr;gap:22px;align-items:stretch;
+    }
+    .services-intro{
+      padding:20px 5px 20px 20px;
+      display:flex;flex-direction:column;justify-content:center;
+    }
+    .services-intro h2{font-size:32px;margin:5px 0 12px}
+    .services-intro p{color:var(--muted);font-size:15px;margin-bottom:20px}
+    .cards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .card{
+      background:var(--card);border:1px solid var(--border);border-radius:15px;
+      box-shadow:var(--shadow);overflow:hidden;transition:.28s;
+    }
+    .card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(7,31,54,.15)}
+    .card-img{height:150px;overflow:hidden}
+    .card-img img{width:100%;height:100%;object-fit:cover;transition:.4s}
+    .card:hover .card-img img{transform:scale(1.05)}
+    .card-body{padding:15px}
+    .card h3{font-size:17px;margin-bottom:8px}
+    .card p{font-size:12px;color:var(--muted);min-height:42px}
+    .card-link{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-size:12px;font-weight:800}
+    .round-arrow{width:27px;height:27px;border:1px solid var(--border);border-radius:50%;display:grid;place-items:center;color:var(--gold)}
+
+    /* Stats */
+    .stats{
+      color:#fff;
+      background:
+        linear-gradient(90deg,rgba(3,30,53,.94),rgba(4,37,65,.86)),
+        url("https://images.unsplash.com/photo-1524230572899-a752b3835840?auto=format&fit=crop&w=2200&q=85") center/cover;
+    }
+    .stats-grid{display:grid;grid-template-columns:1.1fr repeat(4,1fr);gap:20px;align-items:center}
+    .stats-intro h2{font-size:28px}.stats-intro p{font-size:12px;color:#c8d4df;margin-bottom:13px}
+    .stat{padding:12px 18px;text-align:center;border-right:1px solid rgba(255,255,255,.18)}
+    .stat i{color:var(--gold);font-size:25px;margin-bottom:5px}
+    .stat strong{display:block;font-size:29px;line-height:1.1}
+    .stat span{font-size:12px;color:#d6e0e7}
+
+    /* Why */
+    .why{background:#fff}
+    .why-grid{display:grid;grid-template-columns:1.05fr 1.4fr;gap:45px;align-items:center}
+    .why-image{
+      min-height:310px;border-radius:20px;
+      background:
+        linear-gradient(90deg,rgba(255,255,255,.1),rgba(255,255,255,.0)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1300&q=85") center/cover;
+      box-shadow:var(--shadow);
+    }
+    .why-copy h2{font-size:31px;margin-bottom:8px}
+    .why-copy>p{color:var(--muted);font-size:14px;max-width:650px}
+    .features{display:grid;grid-template-columns:repeat(4,1fr);margin-top:32px}
+    .feature{padding:0 18px;border-left:1px solid var(--border);text-align:center}
+    .feature:last-child{border-left:0}
+    .feature i{
+      width:43px;height:43px;border-radius:50%;display:grid;place-items:center;
+      color:#b7790c;background:#fff8e9;border:1px solid #f2d58d;margin:0 auto 8px;
+    }
+    .feature h4{font-size:14px}.feature p{font-size:10px;color:var(--muted)}
+
+    /* Process */
+    .process{
+      color:#fff;
+      background:
+        linear-gradient(90deg,rgba(3,30,53,.97),rgba(3,30,53,.88)),
+        url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2200&q=85") center/cover;
+    }
+    .process h2{font-size:30px}.process p{font-size:12px;color:#c9d6e0}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:30px}
+    .step{position:relative;text-align:center}
+    .step:not(:last-child):after{
+      content:"‹";position:absolute;left:-7px;top:26px;color:#fff;font-size:26px;
+    }
+    .step-num{
+      width:62px;height:62px;margin:auto;border-radius:50%;
+      border:1px solid #7a9ab5;background:rgba(255,255,255,.04);
+      display:grid;place-items:center;font-size:22px;color:#fff;
+    }
+    .step:nth-child(1) .step-num,.step:nth-child(4) .step-num{border-color:var(--gold)}
+    .step strong{display:block;margin-top:8px}.step span{font-size:11px;color:#b9c8d4}
+
+    /* Projects */
+    .projects{background:#f8fbfd}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:17px}
+    .tab{border:1px solid var(--border);background:#fff;padding:7px 17px;border-radius:999px;font-size:12px;cursor:pointer}
+    .tab.active,.tab:hover{background:var(--gold);border-color:var(--gold)}
+    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .project{background:#fff;border:1px solid var(--border);border-radius:15px;overflow:hidden;box-shadow:0 7px 20px rgba(7,31,54,.06)}
+    .project img{width:100%;height:150px;object-fit:cover}
+    .project-body{padding:12px 14px}
+    .project-body strong{font-size:14px}.project-body p{font-size:10px;color:var(--muted)}
+
+    /* Testimonials */
+    .testimonials{background:linear-gradient(#eef7fb,#e9f3f8)}
+    .testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .quote{background:#fff;border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:0 8px 20px rgba(7,31,54,.06)}
+    .person{display:flex;align-items:center;gap:12px;margin-top:16px}
+    .avatar{width:45px;height:45px;border-radius:50%;object-fit:cover}
+    .stars{color:var(--gold);font-size:11px}.quote p{font-size:12px;color:#566a7b}
+
+    /* FAQ / CTA */
+    .faq-cta{background:#fff}
+    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+    .faq h2{font-size:28px;margin-bottom:8px}
+    .faq p{font-size:12px;color:var(--muted)}
+    .faq-item{border-bottom:1px solid var(--border);padding:11px 0}
+    .faq-q{display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:13px;font-weight:700}
+    .faq-a{max-height:0;overflow:hidden;transition:.3s;color:var(--muted);font-size:12px}
+    .faq-item.open .faq-a{max-height:120px;padding-top:8px}
+    .cta{
+      min-height:200px;border-radius:20px;overflow:hidden;padding:30px;color:#fff;
+      background:
+        linear-gradient(90deg,rgba(2,28,49,.92),rgba(3,42,72,.70)),
+        url("https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1200&q=85") center/cover;
+      display:flex;flex-direction:column;justify-content:center;
+    }
+    .cta h2{font-size:29px}.cta p{font-size:12px;color:#d8e2ea;margin-bottom:15px}
+    .contact-mini{display:flex;gap:15px;flex-wrap:wrap;font-size:11px;color:#e1e9ef;margin-top:18px}
+
+    /* Footer */
+    footer{background:#041b30;color:#d7e2ea;padding:28px 0 15px}
+    .footer-grid{display:grid;grid-template-columns:1fr 2fr;gap:30px;align-items:start}
+    .footer-brand p{font-size:11px;color:#91a6b7;margin-top:8px;max-width:360px}
+    .footer-links{display:flex;gap:25px;justify-content:flex-start;flex-wrap:wrap;font-size:11px}
+    .footer-links a:hover{color:var(--gold)}
+    .copyright{border-top:1px solid rgba(255,255,255,.1);margin-top:20px;padding-top:13px;display:flex;justify-content:space-between;gap:20px;font-size:10px;color:#8198ab}
+    .social{display:flex;gap:8px}.social a{width:27px;height:27px;border:1px solid #526d83;border-radius:50%;display:grid;place-items:center}
+    .whatsapp{
+      position:fixed;left:20px;bottom:20px;width:52px;height:52px;border-radius:50%;
+      background:#12b85a;color:#fff;display:grid;place-items:center;font-size:25px;
+      box-shadow:0 10px 25px rgba(0,0,0,.2);z-index:999;
+    }
+
+    /* Responsive */
+    @media(max-width:1100px){
+      .nav-links{gap:15px;font-size:12px}
+      .hero-services{width:58%}
+      .services-wrap{grid-template-columns:1fr}
+      .services-intro{padding:0}.services-intro p{max-width:700px}
+      .stats-grid{grid-template-columns:1fr repeat(4,1fr)}
+    }
+    @media(max-width:850px){
+      .menu-btn{display:block}
+      .nav-links{
+        display:none;position:absolute;top:72px;right:0;left:0;background:#061a2d;
+        padding:10px 5%;flex-direction:column;align-items:stretch;gap:0;
+      }
+      .nav-links.show{display:flex}
+      .nav-links a{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+      .nav-links a.active:after{display:none}
+      .lang{margin-right:auto}
+      .hero{min-height:690px}
+      .hero-content{min-height:690px;align-items:flex-start}
+      .hero-copy{padding-top:60px}
+      .hero-services{left:4%;right:4%;bottom:25px;width:auto}
+      .why-grid,.faq-grid{grid-template-columns:1fr}
+      .why-image{min-height:260px}
+      .features{grid-template-columns:repeat(2,1fr);gap:20px}
+      .feature:nth-child(2){border-left:0}
+      .stats-grid{grid-template-columns:repeat(2,1fr)}
+      .stats-intro{grid-column:1/-1}
+      .stat{border-right:0;border-bottom:1px solid rgba(255,255,255,.12)}
+      .cards-grid{grid-template-columns:repeat(2,1fr)}
+      .projects-grid,.testimonial-grid{grid-template-columns:1fr}
+      .steps{grid-template-columns:repeat(2,1fr)}
+      .footer-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:520px){
+      section{padding:45px 0}
+      .hero h1{font-size:39px}
+      .hero p{font-size:14px}
+      .hero-services{grid-template-columns:repeat(2,1fr)}
+      .hero-service:nth-child(2){border-left:0}
+      .hero-service{border-bottom:1px solid rgba(255,255,255,.12)}
+      .cards-grid{grid-template-columns:1fr}
+      .features{grid-template-columns:1fr}
+      .feature{border-left:0;border-bottom:1px solid var(--border);padding-bottom:15px}
+      .steps{grid-template-columns:1fr}
+      .step:after{display:none}
+      .section-head{display:block}
+      .section-head p{margin-top:8px}
+      .copyright{display:block}.social{margin-top:10px}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <button class="menu-btn" id="menuBtn" aria-label="فتح القائمة"><i class="fa-solid fa-bars"></i></button>
+
+      <div class="lang">
+        <span>العربية 🇸🇦</span>
+        <span>English 🇬🇧</span>
+      </div>
+
+      <nav class="nav-links" id="navLinks">
+        <a class="active" href="#home">الرئيسية</a>
+        <a href="#about">من نحن</a>
+        <a href="#services">خدماتنا</a>
+        <a href="#why">لماذا التميز الشامل؟</a>
+        <a href="#projects">مشاريعنا</a>
+        <a href="#clients">العملاء</a>
+        <a href="#faq">الأسئلة الشائعة</a>
+        <a href="#contact">تواصل معنا</a>
+      </nav>
+
+      <a class="brand" href="#home">
+        <div class="brand-mark"></div>
+        <div class="brand-text">
+          <strong>التميز الشامل</strong>
+          <span>Al Tamayol Al Shamil</span>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <div class="hero-copy">
+          <div class="eyebrow">شريكك في النجاح.. داخل المملكة وخارجها</div>
+          <h1>حوّل فكرتك إلى<br><span>مشروع ناجح</span></h1>
+          <p>
+            في التميز الشامل، نقدم لك حلولاً متكاملة لتأسيس الشركات،
+            الاستشارات الإدارية، الإقامة المميزة، والتسويق والتقنية.
+            شريكك الموثوق في تحقيق أهدافك.
+          </p>
+          <div class="actions">
+            <a class="btn btn-gold" href="#contact">ابدأ رحلتك معنا <i class="fa-solid fa-arrow-left"></i></a>
+            <a class="btn btn-outline" href="#services">تعرف على خدماتنا <i class="fa-solid fa-play"></i></a>
+          </div>
+        </div>
+
+        <div class="hero-services">
+          <div class="hero-service"><i class="fa-solid fa-building"></i>تأسيس الشركات</div>
+          <div class="hero-service"><i class="fa-solid fa-people-group"></i>الإقامة المميزة</div>
+          <div class="hero-service"><i class="fa-solid fa-id-card"></i>الإقامة المميزة</div>
+          <div class="hero-service"><i class="fa-solid fa-bullhorn"></i>التسويق والتقنية</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="services-wrap">
+          <div class="services-intro">
+            <div class="section-head" style="margin-bottom:0">
+              <div>
+                <div class="label">خدماتنا</div>
+                <h2>حلول متكاملة لنجاحك</h2>
+              </div>
+            </div>
+            <p>نقدم مجموعة متنوعة من الخدمات المصممة خصيصاً لتلبية احتياجاتك وتحقيق أهدافك في المملكة العربية السعودية.</p>
+            <a class="btn btn-gold" href="#contact">جميع الخدمات <i class="fa-solid fa-arrow-left"></i></a>
+          </div>
+
+          <div class="cards-grid">
+            <article class="card">
+              <div class="card-img"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="تأسيس الشركات"></div>
+              <div class="card-body">
+                <h3>تأسيس الشركات</h3>
+                <p>تأسيس الشركات بجميع أنواعها وإنجاز إجراءاتك بسرعة وسهولة.</p>
+                <div class="card-link"><span>اكتشف الخدمة</span><span class="round-arrow">←</span></div>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card-img"><img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=80" alt="الاستشارات"></div>
+              <div class="card-body">
+                <h3>الاستشارات</h3>
+                <p>استشارات متخصصة في مختلف المجالات الإدارية والاستراتيجية.</p>
+                <div class="card-link"><span>اكتشف الخدمة</span><span class="round-arrow">←</span></div>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card-img"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80" alt="الإقامة المميزة"></div>
+              <div class="card-body">
+                <h3>الإقامة المميزة</h3>
+                <p>إجراءات سهلة وسريعة للحصول على الإقامة المميزة وفق الأنظمة.</p>
+                <div class="card-link"><span>اكتشف الخدمة</span><span class="round-arrow">←</span></div>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card-img"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80" alt="التسويق والتقنية"></div>
+              <div class="card-body">
+                <h3>التسويق والتقنية</h3>
+                <p>حلول رقمية وتقنية متطورة لتحقق حضوراً قوياً وتدعم أعمالك.</p>
+                <div class="card-link"><span>اكتشف الخدمة</span><span class="round-arrow">←</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats" id="about">
+      <div class="container stats-grid">
+        <div class="stats-intro">
+          <h2>أرقام تتحدث عنا</h2>
+          <p>خبرتنا تحقق لك النجاح وتضعك على طريق المستقبل.</p>
+          <a class="btn btn-outline" href="#projects">شاهد المزيد <i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+        <div class="stat"><i class="fa-solid fa-location-dot"></i><strong>2</strong><span>السعودية وعُمان</span></div>
+        <div class="stat"><i class="fa-solid fa-rocket"></i><strong>+50</strong><span>مشروع ناجح</span></div>
+        <div class="stat"><i class="fa-solid fa-user-tie"></i><strong>+100</strong><span>عميل سعيد</span></div>
+        <div class="stat"><i class="fa-solid fa-calendar-days"></i><strong>+5</strong><span>سنوات خبرة</span></div>
+      </div>
+    </section>
+
+    <section class="why" id="why">
+      <div class="container why-grid">
+        <div class="why-image"></div>
+        <div class="why-copy">
+          <div class="label" style="color:#d79317;font-weight:800">لماذا التميز الشامل؟</div>
+          <h2>لأننا نؤمن بأن نجاحك هو نجاحنا</h2>
+          <p>نتميز بخبرة واسعة وفريق متخصص وشراكات استراتيجية تضمن لك أفضل الحلول بأعلى معايير الجودة والاحترافية.</p>
+          <div class="features">
+            <div class="feature"><i class="fa-solid fa-medal"></i><h4>خبرة وكفاءة</h4><p>مع خبرة طويلة وعميقة</p></div>
+            <div class="feature"><i class="fa-solid fa-shield-halved"></i><h4>ثقة وموثوقية</h4><p>دعم مستمر بعد بدء الخدمة</p></div>
+            <div class="feature"><i class="fa-solid fa-lightbulb"></i><h4>حلول استثنائية</h4><p>أفضل قيمة مقابل الخدمة</p></div>
+            <div class="feature"><i class="fa-solid fa-star"></i><h4>شراكات استراتيجية</h4><p>مع جهات حكومية وعالمية</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="label">كيف نعمل معك؟</div><h2>رحلتك معنا سهلة وواضحة</h2></div>
+          <p>من الاستشارة الأولى حتى التنفيذ والمتابعة، نرافقك في كل خطوة.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="step-num"><i class="fa-solid fa-headset"></i></div><strong>01 الاستشارة الأولية</strong><span>نفهم احتياجاتك</span></div>
+          <div class="step"><div class="step-num"><i class="fa-solid fa-handshake"></i></div><strong>02 الاستشارة</strong><span>حلول مناسبة</span></div>
+          <div class="step"><div class="step-num"><i class="fa-solid fa-file-lines"></i></div><strong>02 دراسة وتحليل</strong><span>وضع خطة متخصصة</span></div>
+          <div class="step"><div class="step-num"><i class="fa-solid fa-gear"></i></div><strong>04 متابعة مستمرة</strong><span>الدعم في كل مرحلة</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects" id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="label">أعمالنا ومشاريعنا</div><h2>نفخر بإنجازاتنا التي تعكس ثقة عملائنا</h2></div>
+          <a class="btn btn-outline" style="color:var(--navy);border-color:var(--gold)" href="#contact">عرض جميع المشاريع</a>
+        </div>
+        <div class="tabs">
+          <button class="tab active" data-filter="all">الكل</button>
+          <button class="tab" data-filter="companies">تأسيس الشركات</button>
+          <button class="tab" data-filter="residency">الإقامة المميزة</button>
+          <button class="tab" data-filter="consulting">الاستشارات</button>
+          <button class="tab" data-filter="marketing">التسويق والتقنية</button>
+        </div>
+        <div class="projects-grid">
+          <article class="project" data-cat="companies"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80"><div class="project-body"><strong>تأسيس شركة تجارية</strong><p>المملكة العربية السعودية</p></div></article>
+          <article class="project" data-cat="residency"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=80"><div class="project-body"><strong>إقامة مميزة لعائلة</strong><p>سلطنة عُمان</p></div></article>
+          <article class="project" data-cat="marketing"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80"><div class="project-body"><strong>حملة تسويقية رقمية</strong><p>السعودية</p></div></article>
+          <article class="project" data-cat="consulting"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80"><div class="project-body"><strong>استشارات إدارية</strong><p>المملكة العربية السعودية</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials" id="clients">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="label">آراء عملائنا</div><h2>ثقتكم هي دافعنا للتميز</h2></div>
+        </div>
+        <div class="testimonial-grid">
+          <div class="quote"><p>“أفضل شركة تعاملت معها في مجال الاستشارات. احترافية عالية وسرعة في الإنجاز.”</p><div class="person"><img class="avatar" src="https://i.pravatar.cc/100?img=12"><div><strong>محمد الشمري</strong><div class="stars">★★★★★</div></div></div></div>
+          <div class="quote"><p>“ساعدونا في تأسيس مشروعنا وإنهاء الإجراءات بسهولة. فريق رائع ومتعاون.”</p><div class="person"><img class="avatar" src="https://i.pravatar.cc/100?img=47"><div><strong>سارة القحطاني</strong><div class="stars">★★★★★</div></div></div></div>
+          <div class="quote"><p>“تعامل احترافي وخدمة ممتازة من البداية وحتى النهاية. أنصح بهم بكل ثقة.”</p><div class="person"><img class="avatar" src="https://i.pravatar.cc/100?img=11"><div><strong>أحمد العتيبي</strong><div class="stars">★★★★★</div></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-cta" id="faq">
+      <div class="container faq-grid">
+        <div class="cta" id="contact">
+          <h2>جاهزون لمساعدتك</h2>
+          <p>تواصل معنا اليوم للحصول على استشارة مجانية والبدء في رحلتك.</p>
+          <div class="actions">
+            <a class="btn btn-gold" href="tel:+966500000000">تواصل معنا <i class="fa-solid fa-phone"></i></a>
+            <a class="btn btn-outline" href="https://wa.me/966500000000" target="_blank">تواصل عبر واتساب <i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+          <div class="contact-mini">
+            <span><i class="fa-solid fa-location-dot"></i> السعودية · عُمان</span>
+            <span><i class="fa-solid fa-envelope"></i> info@example.com</span>
+            <span><i class="fa-solid fa-phone"></i> +966 50 000 0000</span>
+          </div>
+        </div>
+
+        <div class="faq">
+          <div class="label" style="color:#d79317;font-weight:800">الأسئلة الشائعة</div>
+          <h2>إجابات على أكثر الأسئلة شيوعاً</h2>
+          <p>إذا لم تجد إجابة لسؤالك، تواصل معنا مباشرة.</p>
+
+          <div class="faq-item open">
+            <div class="faq-q">ما هي خدمات تأسيس شركتكم؟ <span>+</span></div>
+            <div class="faq-a">نقدم خدمات متكاملة لتأسيس الشركات وإنجاز الإجراءات والمستندات اللازمة.</div>
+          </div>
+          <div class="faq-item"><div class="faq-q">كم تستغرق إجراءات الإقامة المميزة؟ <span>+</span></div><div class="faq-a">تختلف المدة بحسب نوع الطلب واستكمال المستندات والمتطلبات النظامية.</div></div>
+          <div class="faq-item"><div class="faq-q">هل يمكنني تأسيس شركة بالكامل عن بُعد؟ <span>+</span></div><div class="faq-a">يمكن ترتيب جزء كبير من الإجراءات عن بُعد حسب نوع الشركة والخدمة المطلوبة.</div></div>
+          <div class="faq-item"><div class="faq-q">هل تقدمون استشارات مجانية؟ <span>+</span></div><div class="faq-a">يمكنك التواصل معنا لمعرفة الخدمات والعروض المتاحة حالياً.</div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand"><div class="brand-mark"></div><div class="brand-text"><strong>التميز الشامل</strong><span>Al Tamayol Al Shamil</span></div></div>
+          <p>شريكك في النجاح.. داخل المملكة وخارجها. نقدم حلولاً متكاملة تساعدك على تأسيس وتنمية أعمالك.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#home">الرئيسية</a><a href="#about">من نحن</a><a href="#services">خدماتنا</a>
+          <a href="#projects">مشاريعنا</a><a href="#clients">العملاء</a><a href="#faq">الأسئلة الشائعة</a><a href="#contact">تواصل معنا</a>
+        </div>
+      </div>
+      <div class="copyright">
+        <span>© 2026 التميز الشامل. جميع الحقوق محفوظة.</span>
+        <div class="social"><a href="#"><i class="fa-brands fa-x-twitter"></i></a><a href="#"><i class="fa-brands fa-linkedin-in"></i></a><a href="#"><i class="fa-brands fa-youtube"></i></a></div>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp" href="https://wa.me/966500000000" target="_blank" aria-label="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => navLinks.classList.toggle('show'));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        document.querySelectorAll('.faq-item').forEach(x => {
+          if (x !== item) x.classList.remove('open');
+        });
+        item.classList.toggle('open');
+      });
+    });
+
+    // Project filters
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter;
+        document.querySelectorAll('.project').forEach(project => {
+          project.style.display = filter === 'all' || project.dataset.cat === filter ? '' : 'none';
+        });
+      });
+    });
+
+    // Active nav link while scrolling
+    const sections = [...document.querySelectorAll('main section[id]')];
+    const links = [...document.querySelectorAll('.nav-links a')];
+    window.addEventListener('scroll', () => {
+      let current = 'home';
+      sections.forEach(section => {
+        if (window.scrollY >= section.offsetTop - 130) current = section.id;
+      });
+      links.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + current));
+    });
+  </script>
+</body>
+</html>
