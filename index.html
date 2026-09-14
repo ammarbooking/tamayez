@@ -64,7 +64,7 @@ header.scrolled{background:rgba(3,22,39,.88);backdrop-filter:blur(20px);box-shad
 /* ---------- HERO ---------- */
 .hero{min-height:850px;position:relative;isolation:isolate;color:#fff;overflow:hidden;background:
  linear-gradient(90deg,rgba(2,16,29,.97) 0%,rgba(3,23,40,.83) 34%,rgba(3,23,40,.20) 72%,rgba(3,23,40,.50)),
- url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2400&q=90") center/cover}
+ url("https://commons.wikimedia.org/wiki/Special:FilePath/Riyadh%20Skyline%20showing%20the%20King%20Abdullah%20Financial%20District%20%28KAFD%29%20and%20the%20famous%20Kingdom%20Tower%20.jpg?width=2400") center/cover;animation:heroSkylineMove 18s ease-in-out infinite alternate}
 .hero:before{content:"";position:absolute;inset:0;background:
  radial-gradient(circle at 76% 35%,rgba(246,184,63,.16),transparent 25%),
  radial-gradient(circle at 12% 75%,rgba(27,124,194,.18),transparent 27%);z-index:-1}
@@ -389,6 +389,51 @@ html[dir="rtl"] .lang{margin-left:0;margin-right:auto}
 .loader-logo img{width:100%;height:100%;object-fit:contain}
 .footer-brand .logo{display:inline-flex;background:rgba(255,255,255,.05)}
 @media(max-width:700px){.logo{gap:8px;padding:4px 7px;border-radius:14px}.logo-symbol{width:42px;height:42px}.logo-name{font-size:14px!important}.logo-sub{font-size:6px!important}.loader-logo{width:92px;height:92px}}
+
+
+/* ===== SAUDI TOWERS ANIMATED HERO ===== */
+.hero{background-position:center!important;animation:saudiHeroMove 18s ease-in-out infinite alternate}
+.hero:before{animation:saudiGlow 8s ease-in-out infinite}
+@keyframes saudiHeroMove{0%{background-position:center center}50%{background-position:center 42%}100%{background-position:center center}}
+@keyframes saudiGlow{0%,100%{transform:scale(1);filter:brightness(1)}50%{transform:scale(1.03);filter:brightness(1.12)}}
+@media(prefers-reduced-motion:reduce){.hero,.hero:before{animation:none!important}}
+
+/* ===== HEADER LOGO FINAL REFINEMENT ===== */
+header .nav{gap:18px}
+header .logo{
+  margin-right:auto;order:-1;display:flex;align-items:center;gap:13px;
+  padding:5px 12px 5px 6px;min-width:235px;
+  border:0;background:transparent;box-shadow:none;border-radius:16px;
+}
+header .logo:hover{background:rgba(255,255,255,.055);transform:none}
+header .logo-symbol{
+  width:58px;height:58px;flex:0 0 58px;padding:5px!important;
+  background:linear-gradient(145deg,#fffdf8,#eee4cf);
+  border-radius:16px!important;overflow:hidden;
+  box-shadow:0 10px 26px rgba(0,0,0,.22),0 0 0 1px rgba(246,184,63,.42)!important;
+}
+header .logo-symbol img{width:100%;height:100%;object-fit:contain;padding:0}
+header .logo-name{font-size:18px!important;font-weight:900!important;color:#fff;line-height:1.15;letter-spacing:-.4px}
+header .logo-sub{font-size:7.5px!important;color:#f2d79a!important;letter-spacing:1.5px!important;margin-top:5px!important;opacity:.95}
+header.scrolled .logo-symbol{box-shadow:0 8px 22px rgba(0,0,0,.28),0 0 0 1px rgba(246,184,63,.5)!important}
+@media(max-width:850px){
+ header .logo{min-width:0;gap:9px;padding:4px 6px 4px 4px}
+ header .logo-symbol{width:48px;height:48px;flex-basis:48px;border-radius:14px!important}
+ header .logo-name{font-size:15px!important}
+ header .logo-sub{font-size:6px!important;letter-spacing:1px!important}
+}
+@media(max-width:560px){
+ header .logo-symbol{width:44px;height:44px;flex-basis:44px}
+ header .logo-name{font-size:13px!important}
+ header .logo-sub{display:none}
+}
+
+
+/* ===== PREMIUM SAUDI SKYLINE HERO ===== */
+.hero{background-size:110% auto!important;background-position:center center!important}
+@keyframes heroSkylineMove{0%{background-position:48% 50%}50%{background-position:55% 46%}100%{background-position:51% 52%}}
+.hero:before{background:linear-gradient(90deg,rgba(2,16,29,.72) 0%,rgba(3,23,40,.54) 38%,rgba(3,23,40,.10) 72%,rgba(3,23,40,.32)),radial-gradient(circle at 76% 35%,rgba(246,184,63,.22),transparent 30%),radial-gradient(circle at 12% 75%,rgba(27,124,194,.16),transparent 30%)}
+@media(max-width:850px){.hero{background-size:auto 110%!important;background-position:58% center!important}}
 
 </style>
 </head>
@@ -736,6 +781,13 @@ window.addEventListener('scroll',()=>{
 
 <style>
 #aiFab{position:fixed;left:24px;bottom:24px;width:58px;height:58px;border:0;border-radius:50%;background:linear-gradient(135deg,#f6b83f,#d99316);color:#111;box-shadow:0 10px 35px #0008;z-index:9998;cursor:pointer;font-size:25px}#aiChat{position:fixed;left:24px;bottom:94px;width:min(390px,calc(100vw - 32px));height:540px;background:#101318;border:1px solid #ffffff1c;border-radius:22px;box-shadow:0 25px 80px #000b;z-index:9999;display:none;overflow:hidden;color:#fff;font-family:inherit}#aiChat.open{display:flex;flex-direction:column}.aiHead{padding:16px 18px;background:linear-gradient(135deg,#171b22,#0d1015);display:flex;justify-content:space-between;align-items:center}.aiHead b{color:#f6b83f}.aiClose{background:none;border:0;color:#fff;font-size:22px;cursor:pointer}.aiMsgs{flex:1;padding:15px;overflow:auto}.aiMsg{max-width:85%;padding:10px 13px;margin:8px 0;border-radius:15px;line-height:1.7;white-space:pre-wrap}.aiBot{background:#1d232c;margin-right:auto}.aiUser{background:#b77b18;color:#fff;margin-left:auto}.aiForm{display:flex;gap:8px;padding:12px;border-top:1px solid #ffffff14}.aiForm input{flex:1;background:#171b22;border:1px solid #ffffff20;color:#fff;border-radius:12px;padding:11px}.aiForm button{border:0;border-radius:12px;padding:0 16px;background:#f6b83f;color:#111;font-weight:700;cursor:pointer}.aiTyping{opacity:.6}
+
+/* ===== SAUDI TOWERS ANIMATED HERO ===== */
+.hero{background-position:center!important;animation:saudiHeroMove 18s ease-in-out infinite alternate}
+.hero:before{animation:saudiGlow 8s ease-in-out infinite}
+@keyframes saudiHeroMove{0%{background-position:center center}50%{background-position:center 42%}100%{background-position:center center}}
+@keyframes saudiGlow{0%,100%{transform:scale(1);filter:brightness(1)}50%{transform:scale(1.03);filter:brightness(1.12)}}
+@media(prefers-reduced-motion:reduce){.hero,.hero:before{animation:none!important}}
 </style>
 
 <button id="aiFab" aria-label="AI Assistant">✦</button>
