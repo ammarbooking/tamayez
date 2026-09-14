@@ -227,6 +227,49 @@ footer{background:#03192c;color:#d6e1e8;padding:60px 0 20px}
 /* ---------- REVEAL ---------- */
 .reveal{opacity:0;transform:translateY(30px);transition:.8s ease}.reveal.visible{opacity:1;transform:none}
 
+/* ---------- PREMIUM MOUSE TEXT EFFECTS ---------- */
+.mouse-text{
+  --tx:0px;
+  --ty:0px;
+  --glow-x:0px;
+  --glow-y:0px;
+  display:inline-block;
+  position:relative;
+  transform:translate3d(var(--tx),var(--ty),0);
+  transition:transform .22s cubic-bezier(.2,.8,.2,1),text-shadow .22s ease,filter .22s ease;
+  will-change:transform;
+}
+.mouse-text:hover{
+  text-shadow:var(--glow-x) var(--glow-y) 22px rgba(246,184,63,.34),0 0 42px rgba(246,184,63,.13);
+  filter:brightness(1.08);
+}
+.mouse-text.mouse-hero{transition:transform .18s cubic-bezier(.16,1,.3,1),text-shadow .2s ease,filter .2s ease}
+.mouse-text.mouse-hero:hover{filter:brightness(1.12)}
+.mouse-text::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:-7px;height:2px;
+  border-radius:10px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  transform:scaleX(0);
+  transform-origin:center;
+  opacity:0;
+  transition:transform .3s ease,opacity .3s ease;
+  pointer-events:none;
+}
+.mouse-text:hover::after{transform:scaleX(.72);opacity:.8}
+.hero h1 .mouse-text{vertical-align:baseline}
+.hero h1 .mouse-text::after{bottom:-5px;height:3px}
+.service-body h3 .mouse-text,.project-body h3 .mouse-text,.feature h4 .mouse-text{display:inline-block}
+@media (pointer:coarse){
+  .mouse-text{transform:none!important;text-shadow:none!important;filter:none!important}
+  .mouse-text::after{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .mouse-text{transform:none!important;transition:none!important;text-shadow:none!important;filter:none!important}
+  .mouse-text::after{display:none}
+}
+
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:1100px){
  .nav-links{gap:16px;font-size:11px}
@@ -261,6 +304,67 @@ footer{background:#03192c;color:#d6e1e8;padding:60px 0 20px}
  .footer-links{grid-template-columns:repeat(2,1fr)}
  .footer-bottom{display:block}.social{margin-top:14px}
 }
+
+.lang{display:flex;align-items:center;gap:8px;font-size:11px;color:#d6e0e8;white-space:nowrap}.lang-btn{border:0;background:transparent;color:#d6e0e8;font:inherit;font-weight:700;cursor:pointer;padding:5px 3px;transition:.25s}.lang-btn:hover,.lang-btn.active{color:var(--gold)}.lang-divider{opacity:.45}
+html[dir="ltr"] .logo{margin-right:0;margin-left:auto;order:1}
+
+/* ===== PREMIUM HEADER V2 ===== */
+header{padding:12px 0;pointer-events:none}
+header .nav{height:70px;padding:0 18px;border:1px solid rgba(255,255,255,.13);border-radius:22px;background:rgba(3,22,39,.48);backdrop-filter:blur(18px) saturate(130%);box-shadow:0 14px 40px rgba(0,0,0,.12);pointer-events:auto;transition:height .3s,background .3s,border-color .3s,box-shadow .3s}
+header.scrolled{background:transparent;backdrop-filter:none;box-shadow:none}
+header.scrolled .nav{height:64px;background:rgba(3,22,39,.92);border-color:rgba(246,184,63,.18);box-shadow:0 14px 40px rgba(0,0,0,.22)}
+.logo{gap:11px;padding:7px 10px;border-radius:15px;transition:.3s}
+.logo:hover{background:rgba(255,255,255,.06);transform:translateY(-1px)}
+.logo-symbol{width:40px;height:40px;border-radius:12px 12px 12px 3px;box-shadow:0 0 0 1px rgba(246,184,63,.08),0 8px 24px rgba(246,184,63,.08)}
+.logo-name{font-size:16px;letter-spacing:-.2px}
+.logo-sub{font-size:7px;letter-spacing:1px}
+.nav-links{height:100%;gap:5px;padding:5px;border:1px solid rgba(255,255,255,.07);border-radius:17px;background:rgba(255,255,255,.035)}
+.nav-links a{height:100%;display:flex;align-items:center;padding:0 12px!important;border-radius:12px;color:#dce5ec;transition:background .25s,color .25s,transform .25s}
+.nav-links a:after,.nav-links a.active:after{display:none}
+.nav-links a:hover{background:rgba(246,184,63,.09);color:#fff;transform:translateY(-1px)}
+.nav-links a.active{background:linear-gradient(135deg,rgba(246,184,63,.18),rgba(246,184,63,.06));color:var(--gold);box-shadow:inset 0 0 0 1px rgba(246,184,63,.12)}
+.lang{padding:5px;border:1px solid rgba(255,255,255,.10);border-radius:13px;background:rgba(255,255,255,.045);gap:2px}
+.lang-btn{padding:7px 9px!important;border-radius:9px;font-size:10px;line-height:1;transition:.25s}
+.lang-btn:hover{background:rgba(255,255,255,.07)}
+.lang-btn.active{background:rgba(246,184,63,.13);color:var(--gold);box-shadow:inset 0 0 0 1px rgba(246,184,63,.12)}
+.lang-divider{display:none}
+.menu{width:42px;height:42px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(255,255,255,.05);font-size:18px;cursor:pointer;transition:.25s}
+.menu:hover{background:rgba(246,184,63,.12);color:var(--gold);border-color:rgba(246,184,63,.25)}
+html[dir="ltr"] .nav-links{direction:ltr}
+html[dir="ltr"] .lang{margin-left:auto;margin-right:0}
+html[dir="rtl"] .lang{margin-left:0;margin-right:auto}
+@media(max-width:1100px) and (min-width:851px){
+ header .nav{gap:14px}
+ .nav-links{gap:2px}
+ .nav-links a{padding:0 8px!important;font-size:10px}
+ .logo-name{font-size:14px}
+ .lang-btn{padding:7px 6px!important}
+}
+@media(max-width:850px){
+ header{padding:8px 0}
+ header .nav{height:62px;padding:0 10px;border-radius:18px}
+ header.scrolled .nav{height:58px}
+ .logo{padding:5px 7px}
+ .logo-symbol{width:35px;height:35px}
+ .logo-name{font-size:14px}
+ .logo-sub{font-size:6px}
+ .lang{margin-left:auto!important;margin-right:0!important}
+ .menu{display:grid;place-items:center;flex:0 0 42px}
+ .nav-links{position:absolute;top:calc(100% + 9px);right:0;left:0;height:auto;padding:10px;background:rgba(3,22,39,.96);border:1px solid rgba(255,255,255,.11);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.28);backdrop-filter:blur(20px);gap:3px}
+ .nav-links a{height:46px;width:100%;padding:0 15px!important;border-bottom:0!important;justify-content:flex-start;border-radius:12px}
+ .nav-links a:hover,.nav-links a.active{transform:none;background:rgba(246,184,63,.10)}
+ html[dir="ltr"] .nav-links a{justify-content:flex-start}
+}
+@media(max-width:560px){
+ header .container{width:94%}
+ header .nav{gap:7px}
+ .logo-sub{display:none}
+ .logo-name{font-size:13px}
+ .lang-btn{font-size:9px;padding:7px 6px!important}
+ .lang{padding:4px}
+ .menu{width:40px;height:40px;flex-basis:40px}
+}
+
 </style>
 </head>
 
@@ -276,7 +380,7 @@ footer{background:#03192c;color:#d6e1e8;padding:60px 0 20px}
 <header id="header">
   <div class="container nav">
     <button class="menu" id="menu" aria-label="القائمة"><i class="fa-solid fa-bars"></i></button>
-    <div class="lang">العربية 🇸🇦 &nbsp; | &nbsp; English 🇬🇧</div>
+    <div class="lang" aria-label="Language switcher"><button type="button" class="lang-btn active" data-lang="ar">العربية 🇸🇦</button><span class="lang-divider">|</span><button type="button" class="lang-btn" data-lang="en">English 🇬🇧</button></div>
 
     <nav class="nav-links" id="nav">
       <a href="#home" class="active">الرئيسية</a>
@@ -300,8 +404,8 @@ footer{background:#03192c;color:#d6e1e8;padding:60px 0 20px}
 <section class="hero" id="home">
   <div class="container hero-content">
     <div class="hero-copy reveal">
-      <div class="kicker">شريكك في النجاح داخل المملكة وخارجها</div>
-      <h1>حوّل فكرتك إلى<br><span>مشروع استثنائي</span></h1>
+      <div class="kicker mouse-text">شريكك في النجاح داخل المملكة وخارجها</div>
+      <h1><span class="mouse-text mouse-hero">حوّل فكرتك إلى</span><br><span class="mouse-text mouse-hero">مشروع استثنائي</span></h1>
       <p>حلول متكاملة تجمع بين تأسيس الأعمال، الاستشارات، الإقامة المميزة، التسويق والتقنية — بخبرة احترافية تضع مشروعك على الطريق الصحيح.</p>
       <div class="buttons">
         <a class="btn gold" href="#contact">ابدأ رحلتك معنا <i class="fa-solid fa-arrow-left"></i></a>
@@ -337,25 +441,25 @@ footer{background:#03192c;color:#d6e1e8;padding:60px 0 20px}
 <section class="services" id="services">
   <div class="container">
     <div class="section-head reveal">
-      <div><div class="eyebrow">خدماتنا</div><h2 class="section-title">كل ما تحتاجه لبناء<br>مشروع ناجح</h2></div>
+      <div><div class="eyebrow">خدماتنا</div><h2 class="section-title"><span class="mouse-text">كل ما تحتاجه لبناء</span><br><span class="mouse-text">مشروع ناجح</span></h2></div>
       <p class="section-desc">من الفكرة إلى التنفيذ والنمو، نقدم منظومة متكاملة من الخدمات التي تختصر عليك الوقت وتمنحك وضوحاً أكبر في كل خطوة.</p>
     </div>
     <div class="services-grid">
       <article class="service-card reveal">
         <div class="service-img"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=85" alt="تأسيس الشركات"><div class="service-icon"><i class="fa-solid fa-building"></i></div></div>
-        <div class="service-body"><h3>تأسيس الشركات</h3><p>حلول متكاملة لتأسيس شركتك وإنجاز الإجراءات النظامية بكل سهولة.</p><div class="service-link">اكتشف الخدمة <span class="arrow">←</span></div></div>
+        <div class="service-body"><h3><span class="mouse-text">تأسيس الشركات</span></h3><p>حلول متكاملة لتأسيس شركتك وإنجاز الإجراءات النظامية بكل سهولة.</p><div class="service-link">اكتشف الخدمة <span class="arrow">←</span></div></div>
       </article>
       <article class="service-card reveal">
         <div class="service-img"><img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=85" alt="الاستشارات"><div class="service-icon"><i class="fa-solid fa-chess-knight"></i></div></div>
-        <div class="service-body"><h3>الاستشارات</h3><p>استشارات إدارية واستراتيجية تساعدك على اتخاذ القرار بثقة.</p><div class="service-link">اكتشف الخدمة <span class="arrow">←</span></div></div>
+        <div class="service-body"><h3><span class="mouse-text">الاستشارات</span></h3><p>استشارات إدارية واستراتيجية تساعدك على اتخاذ القرار بثقة.</p><div class="service-link">اكتشف الخدمة <span class="arrow">←</span></div></div>
       </article>
       <article class="service-card reveal">
         <div class="service-img"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=85" alt="الإقامة المميزة"><div class="service-icon"><i class="fa-solid fa-crown"></i></div></div>
-        <div class="service-body"><h3>الإقامة المميزة</h3><p>مساندة احترافية في إجراءات الإقامة المميزة والمتطلبات المرتبطة بها.</p><div class="service-link">اكتشف الخدمة <span class="arrow">←</span></div></div>
+        <div class="service-body"><h3><span class="mouse-text">الإقامة المميزة</span></h3><p>مساندة احترافية في إجراءات الإقامة المميزة والمتطلبات المرتبطة بها.</p><div class="service-link">اكتشف الخدمة <span class="arrow">←</span></div></div>
       </article>
       <article class="service-card reveal">
         <div class="service-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=85" alt="التسويق والتقنية"><div class="service-icon"><i class="fa-solid fa-chart-line"></i></div></div>
-        <div class="service-body"><h3>التسويق والتقنية</h3><p>هوية رقمية وحلول تقنية وحملات تسويقية تدعم نمو علامتك التجارية.</p><div class="service-link">اكتشف الخدمة <span class="arrow">←</span></div></div>
+        <div class="service-body"><h3><span class="mouse-text">التسويق والتقنية</span></h3><p>هوية رقمية وحلول تقنية وحملات تسويقية تدعم نمو علامتك التجارية.</p><div class="service-link">اكتشف الخدمة <span class="arrow">←</span></div></div>
       </article>
     </div>
   </div>
@@ -376,13 +480,13 @@ footer{background:#03192c;color:#d6e1e8;padding:60px 0 20px}
     <div class="why-image reveal"><div class="experience"><strong>+5</strong><span>سنوات من الخبرة</span></div></div>
     <div class="reveal">
       <div class="eyebrow">لماذا التميز الشامل؟</div>
-      <h2 class="section-title">نحن لا نقدم خدمة فقط…<br>نحن نبني معك النجاح</h2>
+      <h2 class="section-title"><span class="mouse-text">نحن لا نقدم خدمة فقط…</span><br><span class="mouse-text">نحن نبني معك النجاح</span></h2>
       <p class="section-desc">نمزج الخبرة المحلية مع التفكير الاستراتيجي والتقنيات الحديثة لنقدم حلولاً عملية، واضحة وقابلة للتنفيذ.</p>
       <div class="feature-grid">
-        <div class="feature"><i class="fa-solid fa-bullseye"></i><h4>وضوح في الرؤية</h4><p>نفهم هدفك ونحوّله إلى خطوات واضحة.</p></div>
-        <div class="feature"><i class="fa-solid fa-shield"></i><h4>ثقة وموثوقية</h4><p>نرافقك في المراحل المهمة ولا نتركك وحدك.</p></div>
-        <div class="feature"><i class="fa-solid fa-people-group"></i><h4>فريق متخصص</h4><p>خبرات متنوعة لخدمة احتياجات مشروعك.</p></div>
-        <div class="feature"><i class="fa-solid fa-bolt"></i><h4>سرعة في الإنجاز</h4><p>نختصر التعقيد ونركز على النتائج.</p></div>
+        <div class="feature"><i class="fa-solid fa-bullseye"></i><h4><span class="mouse-text">وضوح في الرؤية</span></h4><p>نفهم هدفك ونحوّله إلى خطوات واضحة.</p></div>
+        <div class="feature"><i class="fa-solid fa-shield"></i><h4><span class="mouse-text">ثقة وموثوقية</span></h4><p>نرافقك في المراحل المهمة ولا نتركك وحدك.</p></div>
+        <div class="feature"><i class="fa-solid fa-people-group"></i><h4><span class="mouse-text">فريق متخصص</span></h4><p>خبرات متنوعة لخدمة احتياجات مشروعك.</p></div>
+        <div class="feature"><i class="fa-solid fa-bolt"></i><h4><span class="mouse-text">سرعة في الإنجاز</span></h4><p>نختصر التعقيد ونركز على النتائج.</p></div>
       </div>
     </div>
   </div>
@@ -391,7 +495,7 @@ footer{background:#03192c;color:#d6e1e8;padding:60px 0 20px}
 <section class="process">
   <div class="container">
     <div class="process-box reveal">
-      <div class="process-head"><div class="eyebrow">كيف نعمل معك؟</div><h2>رحلتك معنا… واضحة من أول خطوة</h2><p>استشارة، دراسة، تنفيذ، ثم متابعة مستمرة حتى تصل للنتيجة.</p></div>
+      <div class="process-head"><div class="eyebrow">كيف نعمل معك؟</div><h2><span class="mouse-text">رحلتك معنا… واضحة من أول خطوة</span></h2><p>استشارة، دراسة، تنفيذ، ثم متابعة مستمرة حتى تصل للنتيجة.</p></div>
       <div class="steps">
         <div class="step"><div class="step-circle"><i class="fa-solid fa-headset"></i></div><b>01 · الاستشارة</b><small>نفهم احتياجاتك وأهدافك</small></div>
         <div class="step"><div class="step-circle"><i class="fa-solid fa-magnifying-glass-chart"></i></div><b>02 · الدراسة</b><small>تحليل ووضع المسار المناسب</small></div>
@@ -405,7 +509,7 @@ footer{background:#03192c;color:#d6e1e8;padding:60px 0 20px}
 <section class="projects" id="projects">
   <div class="container">
     <div class="section-head reveal">
-      <div><div class="eyebrow">أعمالنا ومشاريعنا</div><h2 class="section-title">مشاريع تعكس ثقة عملائنا</h2></div>
+      <div><div class="eyebrow">أعمالنا ومشاريعنا</div><h2 class="section-title"><span class="mouse-text">مشاريع تعكس ثقة عملائنا</span></h2></div>
       <p class="section-desc">نماذج من الخدمات والمشاريع التي نعمل عليها في مجالات الأعمال والاستشارات والتسويق.</p>
     </div>
     <div class="filters">
@@ -416,19 +520,19 @@ footer{background:#03192c;color:#d6e1e8;padding:60px 0 20px}
       <button class="filter" data-filter="marketing">التسويق والتقنية</button>
     </div>
     <div class="projects-grid">
-      <article class="project reveal" data-cat="companies"><div class="project-image"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85" alt=""><span class="project-tag">تأسيس الشركات</span></div><div class="project-body"><h3>تأسيس شركة تجارية</h3><p>المملكة العربية السعودية</p></div></article>
-      <article class="project reveal" data-cat="residency"><div class="project-image"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=85" alt=""><span class="project-tag">الإقامة المميزة</span></div><div class="project-body"><h3>إقامة مميزة</h3><p>خدمة متكاملة وإجراءات منظمة</p></div></article>
-      <article class="project reveal" data-cat="marketing"><div class="project-image"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85" alt=""><span class="project-tag">التسويق والتقنية</span></div><div class="project-body"><h3>حلول تسويق رقمية</h3><p>بناء حضور رقمي ونمو مستهدف</p></div></article>
-      <article class="project reveal" data-cat="consulting"><div class="project-image"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85" alt=""><span class="project-tag">الاستشارات</span></div><div class="project-body"><h3>استشارات إدارية</h3><p>استراتيجية وتشغيل وتطوير أعمال</p></div></article>
-      <article class="project reveal" data-cat="companies"><div class="project-image"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85" alt=""><span class="project-tag">تأسيس الشركات</span></div><div class="project-body"><h3>تأسيس نشاط تجاري</h3><p>حلول تأسيس مخصصة للمستثمرين</p></div></article>
-      <article class="project reveal" data-cat="marketing"><div class="project-image"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85" alt=""><span class="project-tag">التسويق والتقنية</span></div><div class="project-body"><h3>تحول رقمي</h3><p>منصة وحلول رقمية متكاملة</p></div></article>
+      <article class="project reveal" data-cat="companies"><div class="project-image"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85" alt=""><span class="project-tag">تأسيس الشركات</span></div><div class="project-body"><h3><span class="mouse-text">تأسيس شركة تجارية</span></h3><p>المملكة العربية السعودية</p></div></article>
+      <article class="project reveal" data-cat="residency"><div class="project-image"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=85" alt=""><span class="project-tag">الإقامة المميزة</span></div><div class="project-body"><h3><span class="mouse-text">إقامة مميزة</span></h3><p>خدمة متكاملة وإجراءات منظمة</p></div></article>
+      <article class="project reveal" data-cat="marketing"><div class="project-image"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85" alt=""><span class="project-tag">التسويق والتقنية</span></div><div class="project-body"><h3><span class="mouse-text">حلول تسويق رقمية</span></h3><p>بناء حضور رقمي ونمو مستهدف</p></div></article>
+      <article class="project reveal" data-cat="consulting"><div class="project-image"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85" alt=""><span class="project-tag">الاستشارات</span></div><div class="project-body"><h3><span class="mouse-text">استشارات إدارية</span></h3><p>استراتيجية وتشغيل وتطوير أعمال</p></div></article>
+      <article class="project reveal" data-cat="companies"><div class="project-image"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85" alt=""><span class="project-tag">تأسيس الشركات</span></div><div class="project-body"><h3><span class="mouse-text">تأسيس نشاط تجاري</span></h3><p>حلول تأسيس مخصصة للمستثمرين</p></div></article>
+      <article class="project reveal" data-cat="marketing"><div class="project-image"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85" alt=""><span class="project-tag">التسويق والتقنية</span></div><div class="project-body"><h3><span class="mouse-text">تحول رقمي</span></h3><p>منصة وحلول رقمية متكاملة</p></div></article>
     </div>
   </div>
 </section>
 
 <section class="testimonials" id="clients">
   <div class="container">
-    <div class="section-head reveal"><div><div class="eyebrow">آراء عملائنا</div><h2 class="section-title">ثقتكم هي دافعنا</h2></div><p class="section-desc">تجارب حقيقية تعبّر عن أسلوبنا في العمل: وضوح، احترافية، ومتابعة.</p></div>
+    <div class="section-head reveal"><div><div class="eyebrow">آراء عملائنا</div><h2 class="section-title"><span class="mouse-text">ثقتكم هي دافعنا</span></h2></div><p class="section-desc">تجارب حقيقية تعبّر عن أسلوبنا في العمل: وضوح، احترافية، ومتابعة.</p></div>
     <div class="testimonial-grid">
       <article class="testimonial reveal"><div class="quote">“</div><p>تجربة ممتازة من البداية للنهاية. الفريق كان واضحاً وسريعاً في كل خطوة وساعدنا على اختصار الكثير من الوقت.</p><div class="person"><img class="avatar" src="https://i.pravatar.cc/100?img=11" alt=""><div><strong>محمد الشمري</strong><div class="stars">★★★★★</div></div></div></article>
       <article class="testimonial reveal"><div class="quote">“</div><p>احترافية عالية وتعامل راقٍ. حصلنا على الحل المناسب لاحتياجنا وكانت المتابعة ممتازة بعد التنفيذ.</p><div class="person"><img class="avatar" src="https://i.pravatar.cc/100?img=47" alt=""><div><strong>سارة القحطاني</strong><div class="stars">★★★★★</div></div></div></article>
@@ -441,7 +545,7 @@ footer{background:#03192c;color:#d6e1e8;padding:60px 0 20px}
   <div class="container">
     <div class="cta-box reveal">
       <div class="eyebrow">جاهزون لمساعدتك</div>
-      <h2>خلّنا نبدأ مشروعك اليوم</h2>
+      <h2><span class="mouse-text">خلّنا نبدأ مشروعك اليوم</span></h2>
       <p>تواصل معنا للحصول على استشارة أولية ومناقشة احتياجات مشروعك مع فريق التميز الشامل.</p>
       <div class="buttons">
         <a class="btn gold" href="tel:+966500000000"><i class="fa-solid fa-phone"></i> تواصل معنا</a>
@@ -454,7 +558,7 @@ footer{background:#03192c;color:#d6e1e8;padding:60px 0 20px}
 
 <section class="faq-section" id="faq">
   <div class="container faq-grid">
-    <div class="reveal"><div class="eyebrow">الأسئلة الشائعة</div><h2 class="section-title">إجابات واضحة<br>على أسئلتك</h2><p class="section-desc">لم تجد إجابة؟ تواصل معنا وسيساعدك فريقنا في تحديد الخدمة والمسار الأنسب.</p></div>
+    <div class="reveal"><div class="eyebrow">الأسئلة الشائعة</div><h2 class="section-title"><span class="mouse-text">إجابات واضحة</span><br><span class="mouse-text">على أسئلتك</span></h2><p class="section-desc">لم تجد إجابة؟ تواصل معنا وسيساعدك فريقنا في تحديد الخدمة والمسار الأنسب.</p></div>
     <div class="faq-list reveal">
       <div class="faq-item open"><button class="faq-q">ما هي خدمات تأسيس الشركات؟ <span>+</span></button><div class="faq-a">نقدم حلولاً متكاملة لتأسيس الشركات وإنجاز الإجراءات والمستندات والمتطلبات المرتبطة بالخدمة.</div></div>
       <div class="faq-item"><button class="faq-q">هل تساعدون في الإقامة المميزة؟ <span>+</span></button><div class="faq-a">نعم، نقدم المساندة والاستشارات المتعلقة بالإجراءات والمتطلبات حسب نوع الطلب.</div></div>
@@ -487,6 +591,26 @@ footer{background:#03192c;color:#d6e1e8;padding:60px 0 20px}
 
 <a class="whatsapp" href="https://wa.me/966500000000" target="_blank" aria-label="واتساب"><i class="fa-brands fa-whatsapp"></i></a>
 
+<script>
+const translations={"التميز الشامل":"Al Tamayol Al Shamil","الرئيسية":"Home","من نحن":"About Us","خدماتنا":"Our Services","لماذا نحن؟":"Why Us?","مشاريعنا":"Projects","العملاء":"Clients","الأسئلة الشائعة":"FAQ","تواصل معنا":"Contact Us","شريكك في النجاح داخل المملكة وخارجها":"Your partner for success in Saudi Arabia and beyond","حوّل فكرتك إلى":"Turn your idea into","مشروع استثنائي":"An exceptional project","حلول متكاملة تجمع بين تأسيس الأعمال، الاستشارات، الإقامة المميزة، التسويق والتقنية — بخبرة احترافية تضع مشروعك على الطريق الصحيح.":"Integrated solutions for business setup, consulting, premium residency, marketing and technology — with professional expertise that puts your project on the right path.","ابدأ رحلتك معنا":"Start Your Journey","اكتشف خدماتنا":"Explore Our Services","مؤشر النمو":"Growth Indicator","مشروع ناجح":"Successful Projects","تأسيس الشركات":"Business Setup","بسرعة واحترافية":"Fast & Professional","الإقامة المميزة":"Premium Residency","إجراءات متكاملة":"End-to-End Procedures","الاستشارات":"Consulting","حلول استراتيجية":"Strategic Solutions","التسويق والتقنية":"Marketing & Technology","نمو رقمي":"Digital Growth","ثقة وموثوقية":"Trust & Reliability","من البداية حتى ما بعد التنفيذ":"From start to post-delivery","خبرة وكفاءة":"Experience & Expertise","فريق متخصص ومحترف":"Specialized Professional Team","حلول استثنائية":"Exceptional Solutions","مصممة حسب احتياجك":"Designed around your needs","شراكات استراتيجية":"Strategic Partnerships","علاقات تدعم نجاحك":"Relationships that support your success","كل ما تحتاجه لبناء":"Everything you need to build","من الفكرة إلى التنفيذ والنمو، نقدم منظومة متكاملة من الخدمات التي تختصر عليك الوقت وتمنحك وضوحاً أكبر في كل خطوة.":"From idea to execution and growth, we provide an integrated range of services that save you time and give you greater clarity at every step.","حلول متكاملة لتأسيس شركتك وإنجاز الإجراءات النظامية بكل سهولة.":"Complete solutions to establish your company and handle regulatory procedures with ease.","اكتشف الخدمة":"Discover Service","استشارات إدارية واستراتيجية تساعدك على اتخاذ القرار بثقة.":"Management and strategic consulting to help you make confident decisions.","مساندة احترافية في إجراءات الإقامة المميزة والمتطلبات المرتبطة بها.":"Professional support for premium residency procedures and related requirements.","هوية رقمية وحلول تقنية وحملات تسويقية تدعم نمو علامتك التجارية.":"Digital identity, technology solutions and marketing campaigns that support your brand growth.","أرقام تتحدث عنا":"Numbers That Speak for Us","خبرة وعلاقات ونتائج تصنع فرقاً حقيقياً.":"Experience, relationships and results that make a real difference.","استكشف أعمالنا":"Explore Our Work","السعودية وعُمان":"Saudi Arabia & Oman","عميل سعيد":"Happy Clients","سنوات خبرة":"Years of Experience","سنوات من الخبرة":"Years of Experience","لماذا التميز الشامل؟":"Why Al Tamayol Al Shamil?","نحن لا نقدم خدمة فقط…":"We do not just provide a service…","نحن نبني معك النجاح":"We build success with you","نمزج الخبرة المحلية مع التفكير الاستراتيجي والتقنيات الحديثة لنقدم حلولاً عملية، واضحة وقابلة للتنفيذ.":"We combine local expertise, strategic thinking and modern technology to deliver practical, clear and actionable solutions.","وضوح في الرؤية":"Clarity of Vision","نفهم هدفك ونحوّله إلى خطوات واضحة.":"We understand your goal and turn it into clear steps.","نرافقك في المراحل المهمة ولا نتركك وحدك.":"We support you through the important stages and never leave you alone.","فريق متخصص":"Specialized Team","خبرات متنوعة لخدمة احتياجات مشروعك.":"Diverse expertise to serve your project needs.","سرعة في الإنجاز":"Fast Delivery","نختصر التعقيد ونركز على النتائج.":"We simplify complexity and focus on results.","كيف نعمل معك؟":"How We Work With You","رحلتك معنا… واضحة من أول خطوة":"Your journey with us… clear from the first step","استشارة، دراسة، تنفيذ، ثم متابعة مستمرة حتى تصل للنتيجة.":"Consultation, assessment, execution, then continuous follow-up until you reach the result.","01 · الاستشارة":"01 · Consultation","نفهم احتياجاتك وأهدافك":"We understand your needs and goals","02 · الدراسة":"02 · Assessment","تحليل ووضع المسار المناسب":"Analysis and defining the right path","03 · التنفيذ":"03 · Execution","إنجاز الإجراءات باحترافية":"Professional execution of procedures","04 · المتابعة":"04 · Follow-up","دعم مستمر بعد الإنجاز":"Ongoing support after completion","أعمالنا ومشاريعنا":"Our Work & Projects","مشاريع تعكس ثقة عملائنا":"Projects that reflect our clients’ trust","نماذج من الخدمات والمشاريع التي نعمل عليها في مجالات الأعمال والاستشارات والتسويق.":"Examples of services and projects we work on across business, consulting and marketing.","الكل":"All","تأسيس شركة تجارية":"Business Company Setup","المملكة العربية السعودية":"Kingdom of Saudi Arabia","إقامة مميزة":"Premium Residency","خدمة متكاملة وإجراءات منظمة":"Integrated service with organized procedures","حلول تسويق رقمية":"Digital Marketing Solutions","بناء حضور رقمي ونمو مستهدف":"Building digital presence and targeted growth","استشارات إدارية":"Management Consulting","استراتيجية وتشغيل وتطوير أعمال":"Strategy, operations and business development","تأسيس نشاط تجاري":"Business Activity Setup","حلول تأسيس مخصصة للمستثمرين":"Customized setup solutions for investors","تحول رقمي":"Digital Transformation","منصة وحلول رقمية متكاملة":"Integrated digital platform and solutions","آراء عملائنا":"Client Testimonials","ثقتكم هي دافعنا":"Your trust drives us","تجارب حقيقية تعبّر عن أسلوبنا في العمل: وضوح، احترافية، ومتابعة.":"Real experiences that reflect our approach: clarity, professionalism and follow-up.","تجربة ممتازة من البداية للنهاية. الفريق كان واضحاً وسريعاً في كل خطوة وساعدنا على اختصار الكثير من الوقت.":"An excellent experience from start to finish. The team was clear and fast at every step and helped us save a great deal of time.","محمد الشمري":"Mohammed Al-Shammari","احترافية عالية وتعامل راقٍ. حصلنا على الحل المناسب لاحتياجنا وكانت المتابعة ممتازة بعد التنفيذ.":"Highly professional and respectful service. We received the right solution for our needs, with excellent follow-up after implementation.","سارة القحطاني":"Sarah Al-Qahtani","من أفضل التجارب التي مررنا بها. فهموا هدف المشروع بسرعة وقدّموا لنا مساراً واضحاً للتنفيذ.":"One of the best experiences we have had. They quickly understood the project goal and gave us a clear path to execution.","أحمد العتيبي":"Ahmed Al-Otaibi","جاهزون لمساعدتك":"Ready to Help","خلّنا نبدأ مشروعك اليوم":"Let’s Start Your Project Today","تواصل معنا للحصول على استشارة أولية ومناقشة احتياجات مشروعك مع فريق التميز الشامل.":"Contact us for an initial consultation and to discuss your needs with the Al Tamayol Al Shamil team.","واتساب":"WhatsApp","إجابات واضحة":"Clear Answers","على أسئلتك":"To Your Questions","لم تجد إجابة؟ تواصل معنا وسيساعدك فريقنا في تحديد الخدمة والمسار الأنسب.":"Didn’t find an answer? Contact us and our team will help you identify the right service and path.","ما هي خدمات تأسيس الشركات؟":"What business setup services do you provide?","نقدم حلولاً متكاملة لتأسيس الشركات وإنجاز الإجراءات والمستندات والمتطلبات المرتبطة بالخدمة.":"We provide integrated solutions for company setup and the related procedures, documents and requirements.","هل تساعدون في الإقامة المميزة؟":"Do you assist with premium residency?","نعم، نقدم المساندة والاستشارات المتعلقة بالإجراءات والمتطلبات حسب نوع الطلب.":"Yes. We provide support and consulting for procedures and requirements according to the type of application.","هل يمكن بدء الاستشارة عن بُعد؟":"Can the consultation start remotely?","يمكن بدء التواصل والاستشارة عن بُعد، ثم تحديد الخطوات المطلوبة وفق طبيعة الخدمة.":"Yes. Communication and consultation can start remotely, followed by the required steps based on the service.","هل تقدمون حلولاً للتسويق والتقنية؟":"Do you provide marketing and technology solutions?","نعم، تشمل حلولنا التسويق الرقمي والحضور الإلكتروني وبعض الحلول التقنية حسب احتياج المشروع.":"Yes. Our solutions include digital marketing, online presence and selected technology solutions based on project needs.","شريكك في النجاح داخل المملكة وخارجها. حلول متكاملة للأعمال والاستشارات والتسويق والتقنية.":"Your partner for success in Saudi Arabia and beyond. Integrated solutions for business, consulting, marketing and technology.","© 2026 التميز الشامل — جميع الحقوق محفوظة":"© 2026 Al Tamayol Al Shamil — All rights reserved"};
+const originalTextNodes=[];
+function collectTextNodes(root=document.body){
+ const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode(node){if(!node.nodeValue.trim())return NodeFilter.FILTER_REJECT;if(node.parentElement?.closest('.lang,script,style'))return NodeFilter.FILTER_REJECT;return NodeFilter.FILTER_ACCEPT;}});
+ let n;while(n=walker.nextNode())originalTextNodes.push({node:n,ar:n.nodeValue});
+}
+function applyLanguage(lang){
+ const isEn=lang==='en';
+ originalTextNodes.forEach(item=>{const key=item.ar.trim();const value=isEn?(translations[key]||key):item.ar;const leading=item.ar.match(/^\s*/)?.[0]||'';const trailing=item.ar.match(/\s*$/)?.[0]||'';item.node.nodeValue=leading+value+trailing;});
+ document.documentElement.lang=lang;document.documentElement.dir=isEn?'ltr':'rtl';
+ document.title=isEn?'Al Tamayol Al Shamil | Solutions That Create Success':'التميز الشامل | حلول تصنع النجاح';
+ const meta=document.querySelector('meta[name="description"]');if(meta)meta.content=isEn?'Al Tamayol Al Shamil — integrated business, consulting, marketing and technology solutions in Saudi Arabia and Oman':'التميز الشامل — حلول استثمارية وتجارية متكاملة في المملكة العربية السعودية وعُمان';
+ document.querySelectorAll('.lang-btn').forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===lang));
+ const menuBtn=document.getElementById('menu');if(menuBtn)menuBtn.setAttribute('aria-label',isEn?'Menu':'القائمة');
+ const wa=document.querySelector('.whatsapp');if(wa)wa.setAttribute('aria-label',isEn?'WhatsApp':'واتساب');
+ localStorage.setItem('siteLanguage',lang);
+}
+collectTextNodes();document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>applyLanguage(btn.dataset.lang)));applyLanguage(localStorage.getItem('siteLanguage')||'ar');
+</script>
 <script>
 window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hide'),500));
 
@@ -521,6 +645,36 @@ document.querySelectorAll('.filter').forEach(btn=>{
  })
 });
 
+/* Premium mouse-follow text interaction */
+const mouseTexts=document.querySelectorAll('.mouse-text');
+mouseTexts.forEach(el=>{
+  let raf=0;
+  const reset=()=>{
+    el.style.setProperty('--tx','0px');
+    el.style.setProperty('--ty','0px');
+    el.style.setProperty('--glow-x','0px');
+    el.style.setProperty('--glow-y','0px');
+  };
+  el.addEventListener('pointermove',e=>{
+    if(e.pointerType==='touch') return;
+    cancelAnimationFrame(raf);
+    raf=requestAnimationFrame(()=>{
+      const r=el.getBoundingClientRect();
+      const nx=(e.clientX-(r.left+r.width/2))/(r.width/2||1);
+      const ny=(e.clientY-(r.top+r.height/2))/(r.height/2||1);
+      const strength=el.classList.contains('mouse-hero')?7:3.5;
+      const glow=el.classList.contains('mouse-hero')?10:6;
+      const x=Math.max(-1,Math.min(1,nx))*strength;
+      const y=Math.max(-1,Math.min(1,ny))*strength;
+      el.style.setProperty('--tx',x.toFixed(2)+'px');
+      el.style.setProperty('--ty',y.toFixed(2)+'px');
+      el.style.setProperty('--glow-x',(-x*glow/strength).toFixed(2)+'px');
+      el.style.setProperty('--glow-y',(-y*glow/strength).toFixed(2)+'px');
+    });
+  });
+  el.addEventListener('pointerleave',()=>{cancelAnimationFrame(raf);reset()});
+});
+
 const sections=[...document.querySelectorAll('main section[id]')];
 const links=[...document.querySelectorAll('.nav-links a')];
 window.addEventListener('scroll',()=>{
@@ -528,6 +682,42 @@ window.addEventListener('scroll',()=>{
  sections.forEach(s=>{if(scrollY>=s.offsetTop-160)current=s.id});
  links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));
 });
+</script>
+
+<style>
+#aiFab{position:fixed;left:24px;bottom:24px;width:58px;height:58px;border:0;border-radius:50%;background:linear-gradient(135deg,#f6b83f,#d99316);color:#111;box-shadow:0 10px 35px #0008;z-index:9998;cursor:pointer;font-size:25px}#aiChat{position:fixed;left:24px;bottom:94px;width:min(390px,calc(100vw - 32px));height:540px;background:#101318;border:1px solid #ffffff1c;border-radius:22px;box-shadow:0 25px 80px #000b;z-index:9999;display:none;overflow:hidden;color:#fff;font-family:inherit}#aiChat.open{display:flex;flex-direction:column}.aiHead{padding:16px 18px;background:linear-gradient(135deg,#171b22,#0d1015);display:flex;justify-content:space-between;align-items:center}.aiHead b{color:#f6b83f}.aiClose{background:none;border:0;color:#fff;font-size:22px;cursor:pointer}.aiMsgs{flex:1;padding:15px;overflow:auto}.aiMsg{max-width:85%;padding:10px 13px;margin:8px 0;border-radius:15px;line-height:1.7;white-space:pre-wrap}.aiBot{background:#1d232c;margin-right:auto}.aiUser{background:#b77b18;color:#fff;margin-left:auto}.aiForm{display:flex;gap:8px;padding:12px;border-top:1px solid #ffffff14}.aiForm input{flex:1;background:#171b22;border:1px solid #ffffff20;color:#fff;border-radius:12px;padding:11px}.aiForm button{border:0;border-radius:12px;padding:0 16px;background:#f6b83f;color:#111;font-weight:700;cursor:pointer}.aiTyping{opacity:.6}
+</style>
+
+<button id="aiFab" aria-label="AI Assistant">✦</button>
+<div id="aiChat" dir="rtl" aria-hidden="true"><div class="aiHead"><div><b>AI Assistant</b><div style="font-size:12px;opacity:.65">مساعد التميز الشامل</div></div><button class="aiClose" id="aiClose">×</button></div><div class="aiMsgs" id="aiMsgs"><div class="aiMsg aiBot">مرحباً 👋 أنا المساعد الذكي للتميز الشامل. كيف أقدر أساعدك؟</div></div><form class="aiForm" id="aiForm"><input id="aiInput" autocomplete="off" placeholder="اكتب سؤالك هنا..."/><button>إرسال</button></form></div>
+<script>
+(()=>{
+  const fab=document.getElementById('aiFab'),chat=document.getElementById('aiChat'),close=document.getElementById('aiClose'),msgs=document.getElementById('aiMsgs'),form=document.getElementById('aiForm'),input=document.getElementById('aiInput');
+  const isEN=()=>document.documentElement.lang==='en';
+  const add=(t,c,delay=0)=>{const d=document.createElement('div');d.className='aiMsg '+c;d.textContent=t;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d};
+  const normalize=q=>q.toLowerCase().replace(/[؟?!,.،؛:]/g,' ').replace(/\s+/g,' ').trim();
+  const has=(q,words)=>words.some(w=>q.includes(w));
+  const getReply=q=>{
+    const en=isEN(), x=normalize(q);
+    if(has(x,['مرحبا','اهلا','أهلا','السلام عليكم','hello','hi','hey'])) return en?'Hello 👋 Welcome to Al Tamayol Al Shamil. How can I help you today?':'أهلًا وسهلًا 👋 بك في التميز الشامل. كيف أقدر أساعدك اليوم؟';
+    if(has(x,['خدمات','الخدمات','services','what do you offer'])) return en?'We provide company formation, business and strategic consulting, Premium Residency support, and marketing & technology solutions.':'نقدم خدمات تأسيس الشركات، والاستشارات الإدارية والاستراتيجية، والمساندة في إجراءات الإقامة المميزة، وحلول التسويق والتقنية.';
+    if(has(x,['تأسيس','شركة','شركات','company formation','business setup'])) return en?'Yes. We provide integrated support for company formation, procedures, documents and related requirements.':'نعم، نقدم حلولًا متكاملة لتأسيس الشركات وإنجاز الإجراءات والمستندات والمتطلبات المرتبطة بالخدمة.';
+    if(has(x,['استشارة','استشارات','استشار','consult','consulting'])) return en?'We provide management and strategic consulting to help you make decisions with confidence.':'نقدم استشارات إدارية واستراتيجية تساعدك على اتخاذ القرار بثقة، ويمكن بدء التواصل والاستشارة عن بُعد.';
+    if(has(x,['إقامة','الاقامة','الإقامة المميزة','premium residency'])) return en?'Yes. We provide professional support and consultation regarding Premium Residency procedures and requirements according to the type of application.':'نعم، نقدم المساندة والاستشارات المتعلقة بإجراءات ومتطلبات الإقامة المميزة حسب نوع الطلب.';
+    if(has(x,['تسويق','تقنية','التقنية','marketing','technology','digital'])) return en?'Yes. Our solutions include digital marketing, online presence and technology solutions according to the project needs.':'نعم، تشمل حلولنا التسويق الرقمي والحضور الإلكتروني وبعض الحلول التقنية حسب احتياج المشروع.';
+    if(has(x,['تواصل','واتساب','رقم','اتصال','contact','whatsapp','phone'])) return en?'Of course. You can use the contact/WhatsApp button on the website to reach the team directly.':'بالتأكيد. يمكنك استخدام زر التواصل أو الواتساب الموجود في الموقع للوصول إلى فريق التميز الشامل مباشرة.';
+    if(has(x,['سعر','اسعار','تكلفة','كم','price','cost','how much'])) return en?'Pricing depends on the service and its requirements. Tell me which service you need and I can guide you to the appropriate next step.':'الأسعار تختلف حسب الخدمة ومتطلباتها. اكتب لي الخدمة التي تحتاجها وسأوجهك للخطوة المناسبة.';
+    if(has(x,['موقع','وين','اين','where','location'])) return en?'You can use the contact details shown on the website to reach the team and confirm the service location.':'يمكنك استخدام بيانات التواصل الظاهرة في الموقع للتواصل مع الفريق وتأكيد تفاصيل الخدمة.';
+    if(has(x,['مساعدة','ساعد','محتاج','أريد','ابغى','help','need','want'])) return en?'Sure 👍 Tell me what you need: company formation, consulting, Premium Residency, marketing, or technology solutions.':'أكيد 👍 قل لي ماذا تحتاج: تأسيس شركة، استشارة، إقامة مميزة، تسويق، أو حلول تقنية.';
+    const genericEN=['I understand. Tell me a little more about what you need, and I will guide you to the right service.','Sure. I can help you with our services, company formation, consulting, Premium Residency, marketing and technology solutions.','Got it 👍 Please tell me your goal or the service you are looking for, and I will help you with the next step.'];
+    const genericAR=['فهمت عليك 👍 اكتب لي تفاصيل أكثر عن طلبك وسأوجهك للخدمة المناسبة.','أكيد، أقدر أساعدك في خدماتنا وتأسيس الشركات والاستشارات والإقامة المميزة والتسويق والتقنية.','تمام 👍 اكتب لي هدفك أو الخدمة التي تبحث عنها، وسأساعدك في الخطوة التالية.'];
+    const arr=en?genericEN:genericAR; return arr[Math.floor(Math.random()*arr.length)];
+  };
+  const typeReply=(text)=>{const d=add('', 'aiBot');let i=0;const tick=()=>{if(i<text.length){d.textContent+=text.charAt(i++);msgs.scrollTop=msgs.scrollHeight;setTimeout(tick,12)} };tick();};
+  fab.onclick=()=>{chat.classList.toggle('open');chat.setAttribute('aria-hidden',!chat.classList.contains('open'));if(chat.classList.contains('open'))input.focus()};
+  close.onclick=()=>chat.classList.remove('open');
+  form.onsubmit=e=>{e.preventDefault();const q=input.value.trim();if(!q)return;add(q,'aiUser');input.value='';const typing=add(isEN()?'Thinking...':'جاري التفكير...','aiBot aiTyping');setTimeout(()=>{typing.remove();typeReply(getReply(q))},450)};
+})();
 </script>
 </body>
 </html>
